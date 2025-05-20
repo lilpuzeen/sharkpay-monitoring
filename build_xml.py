@@ -21,7 +21,7 @@ def build_xml(pairs_cfg) -> str:
         elif frm == RUB_CODE and to == USDT_CODE:
             inv = (Decimal('1') / base_rate)
             rate = (inv * (Decimal('1') + MARKUP_RUB_USDT))
-        elif frm == '{{USDT_CODE}}':
+        elif frm == USDT_CODE:
             rate = (base_rate * (Decimal('1') - DISCOUNT_USDT_OTH))
         else:
             rate = fetch_rate()

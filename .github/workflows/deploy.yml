@@ -28,6 +28,11 @@ jobs:
         run: pip install -r requirements.txt
 
       - name: Generate rates.xml
+        env:
+          MARKUP_PERCENT: ${{ secrets.MARKUP_PERCENT }}
+          MARKUP_PERCENT_OTH: ${{ secrets.MARKUP_PERCENT_OTH }}
+          USDT_CODE: ${{ secrets.USDT_CODE }}
+          RUB_CODE: ${{ secrets.RUB_CODE }}
         run: python main.py
 
       - name: Deploy to GitHub Pages
@@ -35,5 +40,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: .        # папка, откуда берутся файлы для деплоя (корень репо)
-          force_orphan: true    # создаёт чистую ветку gh-pages, если её нет
+          publish_dir: .
+          force_orphan: true
