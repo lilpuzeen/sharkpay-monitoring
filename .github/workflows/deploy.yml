@@ -2,14 +2,22 @@ name: Generate and Deploy Rates XML
 
 on:
   schedule:
-    - cron: '0,1 * * * *'
+    # каждый 30 минут
+    - cron: '*/1 * * * *'
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
+      - name: Checkout source
+        uses: actions/checkout@v3
+        with:
+          persist-credentials: true
 
       - name: Set up Python
         uses: actions/setup-python@v4
@@ -27,5 +35,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_branch: gh-pages
-          publish_dir: ./
-          publish_files: rates.xml
+          publish_dir: .        # папка, откуда берутся файлы для деплоя (корень репо)
+          force_orphan: true    # создаёт чистую ветку gh-pages, если её нет
