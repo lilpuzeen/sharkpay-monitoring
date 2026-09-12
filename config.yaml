@@ -1,0 +1,34 @@
+# Наценка в процентах от базового курса
+markup_percent: 0.9
+
+# Список конкретных пар для экспорта
+pairs:
+  - from: usdttrc
+    to:   cashrub
+    amount:   10000000.00
+    minamount: 100000.00
+    maxamount: 10000000.00
+
+  - from: cashrub
+    to:   usdttrc
+    amount:   362000.00
+    minamount: 50000.00
+    maxamount: 30000000.00
+
+  - from: usdttrc
+    to:   TCSBRUB
+    amount:   5000000.00
+    minamount: 5000.00
+    maxamount: 5000000.00
+
+  - from: usdttrc
+    to:   SBERRUB
+    amount:   5000000.00
+    minamount: 5000.00
+    maxamount: 5000000.00
+
+  - from: usdttrc
+    to:   sbprub
+    amount:   5000000.00
+    minamount: 5000.00
+    maxamount: 5000000.00
